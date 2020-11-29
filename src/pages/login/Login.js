@@ -7,14 +7,16 @@ import './Login.css';
 
 const users = {
     user1: {
+        userName: 'user1',
         password: '12345',
         name: 'User One',
-        accountBalance: 20000
+        accountBalance: 20000,
     },
     user2: {
+        userName: 'user2',
         password: '12345',
         name: 'User Two',
-        accountBalance: 25000
+        accountBalance: 25000,
     }
 };
 
@@ -25,9 +27,9 @@ const Login = (props) => {
 
 
     const onClickLoginHandler = () => {
-        if (users.hasOwnProperty(userName)) {
+        if (users[userName]) {
             if (users[userName].password === password) {
-                props.authenticateUser(true);
+                props.authenticateUser(true, users[userName]);
             } else {
                 alert('Invalid Password!')
             }

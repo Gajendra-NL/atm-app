@@ -6,7 +6,7 @@ import { authenticateUser } from '../../redux/actions/authActions';
 const Dashboard = (props) => {
 
     const onClickLogout = () => {
-        props.authenticateUser(false);
+        props.authenticateUser(false, {});
     }
     
     return (
@@ -22,4 +22,10 @@ const Dashboard = (props) => {
     )
 }
 
-export default connect(null, { authenticateUser })(Dashboard);
+const mapStateToProps = state => {
+  return {
+    userData: state.authReducer.userData
+  }
+}
+
+export default connect(mapStateToProps, { authenticateUser })(Dashboard);
